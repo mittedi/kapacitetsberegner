@@ -38,8 +38,7 @@
             justify-content: space-between;
         }
         header h1 { font-size: 1.2rem; font-weight: 700; }
-        header p { font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem; }
-
+        header p  { font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem; }
         .indstillinger-knap {
             background: rgba(255,255,255,0.15);
             border: 1px solid rgba(255,255,255,0.3);
@@ -53,49 +52,60 @@
         .indstillinger-knap:hover { background: rgba(255,255,255,0.25); }
 
         /* ── CONTAINER ── */
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem 4rem;
-        }
+        .container { max-width: 680px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
 
         /* ── UGE NAVIGATION ── */
         .uge-nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
         .uge-nav-knap {
             background: var(--hvid);
             border: 1px solid var(--grøn-kant);
             color: var(--grøn-medium);
-            width: 38px;
-            height: 38px;
+            width: 38px; height: 38px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             transition: all 0.15s;
         }
         .uge-nav-knap:hover { background: var(--grøn-meget-lys); }
-        .uge-label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--tekst-mørk);
-            text-align: center;
-        }
+        .uge-label { font-size: 1rem; font-weight: 600; text-align: center; }
         .i-dag-knap {
-            background: none;
-            border: none;
+            background: none; border: none;
             color: var(--grøn-medium);
-            font-size: 0.78rem;
-            cursor: pointer;
+            font-size: 0.78rem; cursor: pointer;
             text-decoration: underline;
-            display: block;
-            margin: 0.15rem auto 0;
+            display: block; margin: 0.15rem auto 0;
+        }
+
+        /* ── VISNING TOGGLE ── */
+        .visning-toggle {
+            display: flex;
+            background: var(--hvid);
+            border: 1px solid var(--grøn-kant);
+            border-radius: 9px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .toggle-knap {
+            flex: 1;
+            padding: 0.55rem;
+            border: none;
+            background: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--tekst-lys);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .toggle-knap.aktiv {
+            background: var(--grøn-medium);
+            color: white;
+            font-weight: 600;
         }
 
         /* ── KAPACITETSKORT ── */
@@ -106,80 +116,32 @@
             padding: 1.2rem 1.4rem;
             margin-bottom: 1rem;
         }
-
         .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.35rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.35rem 0.9rem; border-radius: 20px;
+            font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;
         }
-        .status-ok    { background: #d8f3dc; color: #2d6a4f; }
+        .status-ok      { background: #d8f3dc; color: #2d6a4f; }
         .status-presset { background: #fde8d0; color: #c1440e; }
-        .status-over  { background: #fde0e2; color: #b5121e; }
+        .status-over    { background: #fde0e2; color: #b5121e; }
 
-        .kapacitet-tal {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 0.7rem;
-        }
-        .kapacitet-tal .antal {
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-        .kapacitet-tal .antal span {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: var(--tekst-lys);
-            margin-left: 0.2rem;
-        }
-        .kapacitet-tal .rest {
-            font-size: 0.82rem;
-            color: var(--tekst-lys);
-            text-align: right;
-        }
+        .kapacitet-tal { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.7rem; }
+        .kapacitet-tal .antal { font-size: 1.6rem; font-weight: 700; }
+        .kapacitet-tal .antal span { font-size: 0.85rem; font-weight: 400; color: var(--tekst-lys); margin-left: 0.2rem; }
+        .kapacitet-tal .rest { font-size: 0.82rem; color: var(--tekst-lys); text-align: right; }
 
-        .bar-container {
-            background: var(--grøn-meget-lys);
-            border-radius: 8px;
-            height: 14px;
-            overflow: hidden;
-        }
-        .bar-fyld {
-            height: 100%;
-            border-radius: 8px;
-            transition: width 0.4s ease, background 0.3s;
-            max-width: 100%;
-        }
+        .bar-container { background: var(--grøn-meget-lys); border-radius: 8px; height: 14px; overflow: hidden; }
+        .bar-fyld { height: 100%; border-radius: 8px; transition: width 0.4s ease, background 0.3s; max-width: 100%; }
         .bar-ok      { background: var(--grøn-lys); }
         .bar-presset { background: var(--advarsel); }
         .bar-over    { background: var(--fare); }
 
-        .kapacitet-detaljer {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 0.8rem;
-            flex-wrap: wrap;
-        }
+        .kapacitet-detaljer { display: flex; gap: 1.5rem; margin-top: 0.8rem; flex-wrap: wrap; }
         .kapacitet-detalje { font-size: 0.78rem; color: var(--tekst-lys); }
-        .kapacitet-detalje strong {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--tekst-mørk);
-            font-weight: 600;
-        }
+        .kapacitet-detalje strong { display: block; font-size: 0.9rem; color: var(--tekst-mørk); font-weight: 600; }
 
-        /* ── SKUB-BANNER ── */
-        .skub-banner {
-            border-radius: 10px;
-            padding: 0.9rem 1.1rem;
-            margin-bottom: 1rem;
-            display: none;
-        }
+        /* ── SKUB BANNER ── */
+        .skub-banner { border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 1rem; display: none; }
         .skub-banner.vis { display: block; }
         .skub-banner.presset { background: #fff8ed; border: 1px solid #f4a261; }
         .skub-banner.over    { background: #fff0f0; border: 1px solid #e63946; }
@@ -193,292 +155,224 @@
 
         /* ── UGEJUSTERING ── */
         .ugejustering {
-            background: var(--hvid);
-            border: 1px solid var(--grøn-kant);
-            border-radius: 10px;
-            padding: 0.9rem 1.1rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
+            background: var(--hvid); border: 1px solid var(--grøn-kant);
+            border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 1rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
         }
         .ugejustering label { font-size: 0.85rem; font-weight: 500; }
         .ugejustering small { font-size: 0.75rem; color: var(--tekst-lys); display: block; }
         .ugejustering select {
-            padding: 0.4rem 0.6rem;
-            border: 1px solid var(--grøn-kant);
-            border-radius: 7px;
-            font-size: 0.88rem;
-            color: var(--tekst-mørk);
-            background: var(--grøn-baggrund);
-            cursor: pointer;
+            padding: 0.4rem 0.6rem; border: 1px solid var(--grøn-kant);
+            border-radius: 7px; font-size: 0.88rem; color: var(--tekst-mørk);
+            background: var(--grøn-baggrund); cursor: pointer;
         }
 
-        /* ── HURTIG-TILFØJ ── */
-        .hurtig-tilføj {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-        }
+        /* ── HURTIG TILFØJ ── */
+        .hurtig-tilføj { display: flex; gap: 0.5rem; margin-bottom: 0.8rem; }
         .hurtig-navn {
-            flex: 1;
-            padding: 0.6rem 0.85rem;
-            border: 1.5px solid var(--grøn-kant);
-            border-radius: 9px;
-            font-size: 0.9rem;
-            color: var(--tekst-mørk);
-            background: var(--hvid);
+            flex: 1; padding: 0.6rem 0.85rem;
+            border: 1.5px solid var(--grøn-kant); border-radius: 9px;
+            font-size: 0.9rem; color: var(--tekst-mørk); background: var(--hvid);
             transition: border-color 0.15s;
         }
         .hurtig-navn:focus { outline: none; border-color: var(--grøn-lys); }
         .hurtig-navn::placeholder { color: var(--tekst-lys); }
         .hurtig-dage {
-            padding: 0.6rem 0.5rem;
-            border: 1.5px solid var(--grøn-kant);
-            border-radius: 9px;
-            font-size: 0.88rem;
-            color: var(--tekst-mørk);
-            background: var(--hvid);
-            cursor: pointer;
-            min-width: 90px;
+            padding: 0.6rem 0.5rem; border: 1.5px solid var(--grøn-kant);
+            border-radius: 9px; font-size: 0.88rem; color: var(--tekst-mørk);
+            background: var(--hvid); cursor: pointer; min-width: 90px;
         }
         .hurtig-tilføj-knap {
-            background: var(--grøn-medium);
-            color: white;
-            border: none;
-            padding: 0.6rem 1rem;
-            border-radius: 9px;
-            cursor: pointer;
-            font-size: 0.88rem;
-            font-weight: 600;
+            background: var(--grøn-medium); color: white; border: none;
+            padding: 0.6rem 1rem; border-radius: 9px; cursor: pointer;
+            font-size: 0.88rem; font-weight: 600; white-space: nowrap;
             transition: background 0.15s;
-            white-space: nowrap;
         }
         .hurtig-tilføj-knap:hover { background: var(--grøn-mørk); }
 
         /* ── SEKTION HEADER ── */
-        .sektion-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.6rem;
-        }
-        .sektion-titel { font-size: 0.9rem; font-weight: 600; }
+        .sektion-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+        .sektion-titel  { font-size: 0.9rem; font-weight: 600; }
         .tilføj-detaljer-knap {
-            background: none;
-            border: 1px solid var(--grøn-kant);
-            color: var(--grøn-medium);
-            padding: 0.35rem 0.8rem;
-            border-radius: 7px;
-            cursor: pointer;
-            font-size: 0.8rem;
+            background: none; border: 1px solid var(--grøn-kant);
+            color: var(--grøn-medium); padding: 0.35rem 0.8rem;
+            border-radius: 7px; cursor: pointer; font-size: 0.8rem;
             transition: all 0.15s;
         }
         .tilføj-detaljer-knap:hover { background: var(--grøn-meget-lys); }
 
-        /* ── OPGAVEKORT ── */
+        /* ── OPGAVEKORT (ugeliste) ── */
         .ingen-opgaver {
-            text-align: center;
-            padding: 2.5rem 1rem;
-            color: var(--tekst-lys);
-            font-size: 0.88rem;
-            background: var(--hvid);
-            border-radius: 12px;
+            text-align: center; padding: 2.5rem 1rem; color: var(--tekst-lys);
+            font-size: 0.88rem; background: var(--hvid); border-radius: 12px;
             border: 1px dashed var(--grøn-kant);
         }
         .ingen-opgaver p { margin-top: 0.4rem; font-size: 0.8rem; }
 
         .opgave-kort {
-            background: var(--hvid);
-            border: 1px solid var(--grøn-kant);
-            border-radius: 12px;
-            padding: 0.9rem 1rem;
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.9rem;
+            background: var(--hvid); border: 1px solid var(--grøn-kant);
+            border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 0.6rem;
+            display: flex; align-items: flex-start; gap: 0.9rem;
             transition: opacity 0.2s;
         }
         .opgave-kort.færdig { opacity: 0.5; }
 
-        /* Afkrydsningsfelt */
         .kryds-wrapper { flex-shrink: 0; margin-top: 0.1rem; cursor: pointer; }
         .kryds-wrapper input[type="checkbox"] { display: none; }
         .kryds-boks {
-            width: 26px;
-            height: 26px;
-            border: 2px solid var(--grøn-kant);
-            border-radius: 7px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.15s;
-            background: var(--hvid);
+            width: 26px; height: 26px; border: 2px solid var(--grøn-kant);
+            border-radius: 7px; display: flex; align-items: center; justify-content: center;
+            transition: all 0.15s; background: var(--hvid);
         }
         .kryds-wrapper:hover .kryds-boks { border-color: var(--grøn-lys); background: var(--grøn-meget-lys); }
-        .kryds-wrapper input:checked + .kryds-boks {
-            background: var(--grøn-medium);
-            border-color: var(--grøn-medium);
-        }
-        .kryds-wrapper input:checked + .kryds-boks::after {
-            content: '✓';
-            color: white;
-            font-size: 0.95rem;
-            font-weight: 700;
-        }
+        .kryds-wrapper input:checked + .kryds-boks { background: var(--grøn-medium); border-color: var(--grøn-medium); }
+        .kryds-wrapper input:checked + .kryds-boks::after { content: '✓'; color: white; font-size: 0.95rem; font-weight: 700; }
 
         .opgave-indhold { flex: 1; min-width: 0; }
-        .opgave-navn {
-            font-size: 0.92rem;
-            font-weight: 500;
-            margin-bottom: 0.35rem;
-            cursor: pointer;
-        }
+        .opgave-navn { font-size: 0.92rem; font-weight: 500; margin-bottom: 0.35rem; cursor: pointer; }
         .opgave-navn:hover { text-decoration: underline; text-decoration-color: var(--grøn-kant); }
-        .opgave-kort.færdig .opgave-navn {
-            text-decoration: line-through;
-            color: var(--tekst-lys);
-        }
+        .opgave-kort.færdig .opgave-navn { text-decoration: line-through; color: var(--tekst-lys); }
         .opgave-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
 
-        .badge {
-            font-size: 0.73rem;
-            padding: 0.2rem 0.55rem;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-        .badge-p1 { background: #d8f3dc; color: #2d6a4f; }
-        .badge-p2 { background: #e8f5ec; color: #40916c; }
-        .badge-p3 { background: #f4f4f4; color: #888; }
+        .badge { font-size: 0.73rem; padding: 0.2rem 0.55rem; border-radius: 20px; font-weight: 500; }
+        .badge-p1   { background: #d8f3dc; color: #2d6a4f; }
+        .badge-p2   { background: #e8f5ec; color: #40916c; }
+        .badge-p3   { background: #f4f4f4; color: #888; }
         .badge-dage { background: var(--grøn-meget-lys); color: var(--grøn-mørk); }
+        .badge-dag  { background: #e8f0fe; color: #1a56a0; }
 
         .status-knap {
-            font-size: 0.73rem;
-            padding: 0.2rem 0.55rem;
-            border-radius: 20px;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            transition: all 0.15s;
+            font-size: 0.73rem; padding: 0.2rem 0.55rem; border-radius: 20px;
+            font-weight: 500; border: none; cursor: pointer; transition: all 0.15s;
         }
         .status-ikke-startet { background: #f0f0f0; color: #666; }
         .status-i-gang       { background: #dbeafe; color: #1e40af; }
         .status-færdig       { background: #d8f3dc; color: #2d6a4f; }
 
         .slet-knap {
-            flex-shrink: 0;
-            background: none;
-            border: none;
-            color: var(--tekst-lys);
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 0.2rem 0.3rem;
-            border-radius: 5px;
-            opacity: 0;
-            transition: opacity 0.15s;
+            flex-shrink: 0; background: none; border: none; color: var(--tekst-lys);
+            cursor: pointer; font-size: 1rem; padding: 0.2rem 0.3rem;
+            border-radius: 5px; opacity: 0; transition: opacity 0.15s;
         }
         .opgave-kort:hover .slet-knap { opacity: 1; }
         .slet-knap:hover { color: var(--fare); }
 
-        /* ── FÆRDIGE ── */
         .færdige-header {
-            font-size: 0.8rem;
-            color: var(--tekst-lys);
-            margin: 1.2rem 0 0.5rem;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            gap: 0.3rem;
+            font-size: 0.8rem; color: var(--tekst-lys);
+            margin: 1.2rem 0 0.5rem; cursor: pointer;
+            display: none; align-items: center; gap: 0.3rem;
         }
         .færdige-liste { display: none; }
         .færdige-liste.vis { display: block; }
 
+        /* ══════════════════════════════════════════════
+           DAG VISNING
+        ══════════════════════════════════════════════ */
+        .dag-visning { display: none; }
+        .dag-visning.vis { display: block; }
+
+        .dag-række {
+            background: var(--hvid);
+            border: 1px solid var(--grøn-kant);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            margin-bottom: 0.6rem;
+        }
+        .dag-header {
+            display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;
+        }
+        .dag-navn {
+            font-size: 0.88rem; font-weight: 600; color: var(--tekst-mørk);
+            min-width: 80px;
+        }
+        .dag-navn small { font-size: 0.72rem; font-weight: 400; color: var(--tekst-lys); display: block; }
+        .dag-bar-ydre {
+            flex: 1; background: var(--grøn-meget-lys); border-radius: 6px; height: 10px; overflow: hidden;
+        }
+        .dag-bar-fyld { height: 100%; border-radius: 6px; transition: width 0.4s ease, background 0.3s; max-width: 100%; }
+        .dag-status { font-size: 0.75rem; color: var(--tekst-lys); white-space: nowrap; min-width: 65px; text-align: right; }
+        .dag-status.over    { color: var(--fare); font-weight: 600; }
+        .dag-status.presset { color: #c1440e; font-weight: 600; }
+
+        .dag-opgaver-liste { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.35rem; }
+
+        .dag-opgave-chip {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.82rem; padding: 0.35rem 0.6rem;
+            background: var(--grøn-baggrund); border-radius: 7px;
+            cursor: pointer; transition: background 0.15s;
+        }
+        .dag-opgave-chip:hover { background: var(--grøn-meget-lys); }
+        .dag-opgave-chip.færdig { opacity: 0.5; text-decoration: line-through; }
+        .dag-opgave-chip .chip-navn { flex: 1; }
+        .dag-opgave-chip .chip-span {
+            font-size: 0.7rem; color: var(--tekst-lys);
+            background: white; padding: 0.1rem 0.4rem;
+            border-radius: 10px; white-space: nowrap;
+        }
+        .dag-opgave-chip .chip-kryds {
+            width: 18px; height: 18px; border: 1.5px solid var(--grøn-kant);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; transition: all 0.15s; font-size: 0.7rem;
+        }
+        .dag-opgave-chip:hover .chip-kryds { border-color: var(--grøn-lys); }
+        .dag-opgave-chip.færdig .chip-kryds { background: var(--grøn-medium); border-color: var(--grøn-medium); color: white; }
+
+        .dag-ledig { font-size: 0.78rem; color: var(--tekst-lys); font-style: italic; margin-top: 0.3rem; }
+
+        .uplacerede-sektion {
+            background: var(--hvid); border: 1px dashed var(--grøn-kant);
+            border-radius: 12px; padding: 0.9rem 1rem; margin-top: 0.4rem;
+        }
+        .uplacerede-titel { font-size: 0.82rem; color: var(--tekst-lys); font-weight: 600; margin-bottom: 0.5rem; }
+        .uplacerede-chip {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            font-size: 0.8rem; padding: 0.3rem 0.7rem;
+            background: var(--grøn-baggrund); border-radius: 20px;
+            margin: 0.2rem; cursor: pointer; transition: background 0.15s;
+        }
+        .uplacerede-chip:hover { background: var(--grøn-meget-lys); }
+
         /* ── MODAL ── */
         .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.35);
-            z-index: 100;
-            display: none;
-            align-items: flex-end;
-            justify-content: center;
+            position: fixed; inset: 0; background: rgba(0,0,0,0.35);
+            z-index: 100; display: none; align-items: flex-end; justify-content: center;
         }
         .modal-overlay.vis { display: flex; }
-
         .modal {
-            background: var(--hvid);
-            border-radius: 20px 20px 0 0;
-            padding: 1.5rem 1.5rem 2.5rem;
-            width: 100%;
-            max-width: 680px;
-            max-height: 90vh;
-            overflow-y: auto;
+            background: var(--hvid); border-radius: 20px 20px 0 0;
+            padding: 1.5rem 1.5rem 2.5rem; width: 100%; max-width: 680px;
+            max-height: 90vh; overflow-y: auto;
             animation: slide-op 0.25s ease;
         }
         @keyframes slide-op {
             from { transform: translateY(80px); opacity: 0; }
             to   { transform: translateY(0);    opacity: 1; }
         }
-
-        .modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.3rem;
-        }
+        .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.3rem; }
         .modal-header h2 { font-size: 1.05rem; font-weight: 700; }
         .luk-knap {
-            background: var(--grøn-meget-lys);
-            border: none;
-            color: var(--grøn-mørk);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--grøn-meget-lys); border: none; color: var(--grøn-mørk);
+            width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
         }
 
         .formular-gruppe { margin-bottom: 1rem; }
-        .formular-gruppe label {
-            display: block;
-            font-size: 0.83rem;
-            font-weight: 500;
-            margin-bottom: 0.35rem;
-        }
-        .formular-gruppe small {
-            font-size: 0.75rem;
-            color: var(--tekst-lys);
-            display: block;
-            margin-top: 0.25rem;
-        }
+        .formular-gruppe label { display: block; font-size: 0.83rem; font-weight: 500; margin-bottom: 0.35rem; }
+        .formular-gruppe small { font-size: 0.75rem; color: var(--tekst-lys); display: block; margin-top: 0.25rem; }
         .formular-gruppe input,
         .formular-gruppe select {
-            width: 100%;
-            padding: 0.6rem 0.8rem;
-            border: 1px solid var(--grøn-kant);
-            border-radius: 9px;
-            font-size: 0.9rem;
-            color: var(--tekst-mørk);
-            background: var(--grøn-baggrund);
+            width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--grøn-kant);
+            border-radius: 9px; font-size: 0.9rem; color: var(--tekst-mørk); background: var(--grøn-baggrund);
         }
         .formular-gruppe input:focus,
         .formular-gruppe select:focus { outline: 2px solid var(--grøn-lys); }
 
         .prioritet-vælger { display: flex; gap: 0.5rem; }
         .prioritet-option {
-            flex: 1;
-            text-align: center;
-            padding: 0.6rem 0.3rem;
-            border: 1.5px solid var(--grøn-kant);
-            border-radius: 9px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            transition: all 0.15s;
-            background: var(--grøn-baggrund);
+            flex: 1; text-align: center; padding: 0.6rem 0.3rem;
+            border: 1.5px solid var(--grøn-kant); border-radius: 9px;
+            cursor: pointer; font-size: 0.82rem; transition: all 0.15s; background: var(--grøn-baggrund);
         }
         .prioritet-option .emoji { font-size: 1.1rem; display: block; margin-bottom: 0.2rem; }
         .prioritet-option.valgt-1 { border-color: #2d6a4f; background: #d8f3dc; color: #2d6a4f; font-weight: 600; }
@@ -486,144 +380,74 @@
         .prioritet-option.valgt-3 { border-color: #aaa;    background: #f4f4f4; color: #666;    font-weight: 600; }
 
         .gem-knap {
-            width: 100%;
-            background: var(--grøn-medium);
-            color: white;
-            border: none;
-            padding: 0.85rem;
-            border-radius: 11px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 0.5rem;
-            transition: background 0.15s;
+            width: 100%; background: var(--grøn-medium); color: white; border: none;
+            padding: 0.85rem; border-radius: 11px; font-size: 0.95rem; font-weight: 600;
+            cursor: pointer; margin-top: 0.5rem; transition: background 0.15s;
         }
         .gem-knap:hover { background: var(--grøn-mørk); }
 
         /* ── INDSTILLINGER PANEL ── */
-        .panel-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.35);
-            z-index: 100;
-            display: none;
-        }
+        .panel-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 100; display: none; }
         .panel-overlay.vis { display: block; }
-
         .panel {
-            position: fixed;
-            top: 0; right: 0; bottom: 0;
-            width: min(360px, 100vw);
-            background: var(--hvid);
-            z-index: 101;
-            padding: 1.5rem;
-            overflow-y: auto;
-            transform: translateX(100%);
-            transition: transform 0.25s ease;
+            position: fixed; top: 0; right: 0; bottom: 0;
+            width: min(360px, 100vw); background: var(--hvid);
+            z-index: 101; padding: 1.5rem; overflow-y: auto;
+            transform: translateX(100%); transition: transform 0.25s ease;
         }
         .panel.vis { transform: translateX(0); }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
+        .panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
         .panel-header h2 { font-size: 1rem; font-weight: 700; }
-
         .sektion-divider {
-            font-size: 0.73rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--tekst-lys);
-            margin: 1.3rem 0 0.8rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid var(--grøn-kant);
+            font-size: 0.73rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.6px; color: var(--tekst-lys);
+            margin: 1.3rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--grøn-kant);
         }
         .fast-tag {
-            background: var(--grøn-meget-lys);
-            color: var(--grøn-mørk);
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.1rem 0.45rem;
-            border-radius: 8px;
-            margin-left: 0.3rem;
+            background: var(--grøn-meget-lys); color: var(--grøn-mørk);
+            font-size: 0.7rem; font-weight: 600; padding: 0.1rem 0.45rem;
+            border-radius: 8px; margin-left: 0.3rem;
         }
-
         .kapacitet-info {
-            background: var(--grøn-meget-lys);
-            border-radius: 9px;
-            padding: 0.8rem 1rem;
-            margin-top: 1rem;
-            font-size: 0.82rem;
-            line-height: 1.5;
+            background: var(--grøn-meget-lys); border-radius: 9px;
+            padding: 0.8rem 1rem; margin-top: 1rem; font-size: 0.82rem; line-height: 1.5;
         }
         .kapacitet-info strong { color: var(--grøn-mørk); }
-
         .gem-indstillinger-knap {
-            width: 100%;
-            background: var(--grøn-medium);
-            color: white;
-            border: none;
-            padding: 0.8rem;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: background 0.15s;
+            width: 100%; background: var(--grøn-medium); color: white; border: none;
+            padding: 0.8rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600;
+            cursor: pointer; margin-top: 1rem; transition: background 0.15s;
         }
         .gem-indstillinger-knap:hover { background: var(--grøn-mørk); }
 
-        /* ── TOAST ── */
-        .toast {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--grøn-mørk);
-            color: white;
-            padding: 0.7rem 1.3rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            z-index: 200;
-            transition: transform 0.3s ease;
-            white-space: nowrap;
-        }
-        .toast.vis { transform: translateX(-50%) translateY(0); }
-
         /* ── STØT ── */
-        .støt-sektion {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 0 1rem 1rem;
-            text-align: center;
-        }
+        .støt-sektion { max-width: 680px; margin: 0 auto; padding: 0 1rem 1rem; text-align: center; }
         .støt-sektion p { font-size: 0.83rem; color: var(--tekst-lys); margin-bottom: 0.75rem; }
         .support-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
         .support-btns a {
-            display: inline-block;
-            padding: 0.65rem 1.4rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 600;
-            transition: opacity 0.15s;
+            display: inline-block; padding: 0.65rem 1.4rem; border-radius: 8px;
+            text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: opacity 0.15s;
         }
         .support-btns a:hover { opacity: 0.85; }
-        .btn-kofi     { background: #FF5E5B; color: white; }
+        .btn-kofi      { background: #FF5E5B; color: white; }
         .btn-mobilepay { background: #5a2d8c; color: white; }
 
         footer {
-            text-align: center;
-            padding: 1.5rem 1rem 2rem;
-            color: #999;
-            font-size: 0.78rem;
-            line-height: 1.7;
+            text-align: center; padding: 1.5rem 1rem 2rem;
+            color: #999; font-size: 0.78rem; line-height: 1.7;
         }
         footer a { color: #aaa; }
+
+        /* ── TOAST ── */
+        .toast {
+            position: fixed; bottom: 1.5rem; left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--grøn-mørk); color: white;
+            padding: 0.7rem 1.3rem; border-radius: 30px;
+            font-size: 0.85rem; font-weight: 500; z-index: 200;
+            transition: transform 0.3s ease; white-space: nowrap;
+        }
+        .toast.vis { transform: translateX(-50%) translateY(0); }
     </style>
 </head>
 <body>
@@ -648,108 +472,112 @@
         <button class="uge-nav-knap" onclick="skiftUge(1)">›</button>
     </div>
 
-    <!-- Kapacitetskort -->
-    <div class="kapacitet-kort">
-        <div class="status-badge status-ok" id="status-badge">🟢 OK — du har luft</div>
-        <div class="kapacitet-tal">
-            <div class="antal" id="planlagt-dage">0 <span>dage planlagt</span></div>
-            <div class="rest" id="rest-tekst">af 0 dage</div>
-        </div>
-        <div class="bar-container">
-            <div class="bar-fyld bar-ok" id="kapacitet-bar" style="width:0%"></div>
-        </div>
-        <div class="kapacitet-detaljer">
-            <div class="kapacitet-detalje">
-                <strong id="detalje-kapacitet">0 dage</strong>
-                Ugentlig kapacitet
+    <!-- Visning toggle -->
+    <div class="visning-toggle">
+        <button class="toggle-knap aktiv" id="toggle-uge" onclick="skiftVisning('uge')">📅 Ugeoverblik</button>
+        <button class="toggle-knap" id="toggle-dag" onclick="skiftVisning('dag')">📆 Dag for dag</button>
+    </div>
+
+    <!-- ══ UGE VISNING ══ -->
+    <div id="uge-visning">
+
+        <!-- Kapacitetskort -->
+        <div class="kapacitet-kort">
+            <div class="status-badge status-ok" id="status-badge">🟢 OK — du har luft</div>
+            <div class="kapacitet-tal">
+                <div class="antal" id="planlagt-dage">0 <span>dage planlagt</span></div>
+                <div class="rest" id="rest-tekst">af 0 dage</div>
             </div>
-            <div class="kapacitet-detalje">
-                <strong id="detalje-ferie">0 dage</strong>
-                Ferie/fravær
+            <div class="bar-container">
+                <div class="bar-fyld bar-ok" id="kapacitet-bar" style="width:0%"></div>
             </div>
-            <div class="kapacitet-detalje">
-                <strong id="detalje-møder">0 t</strong>
-                Faste møder
+            <div class="kapacitet-detaljer">
+                <div class="kapacitet-detalje"><strong id="detalje-kapacitet">0 dage</strong>Ugentlig kapacitet</div>
+                <div class="kapacitet-detalje"><strong id="detalje-ferie">0 dage</strong>Ferie/fravær</div>
+                <div class="kapacitet-detalje"><strong id="detalje-møder">0 t</strong>Faste møder</div>
             </div>
         </div>
-    </div>
 
-    <!-- Skub-banner -->
-    <div class="skub-banner" id="skub-banner">
-        <p id="skub-tekst"></p>
-        <ul id="skub-liste"></ul>
-    </div>
-
-    <!-- Ugejustering: ferie -->
-    <div class="ugejustering">
-        <div>
-            <label>Ferie/fravær denne uge</label>
-            <small>Kun for den valgte uge — ændrer ikke dine faste indstillinger</small>
+        <!-- Skub banner -->
+        <div class="skub-banner" id="skub-banner">
+            <p id="skub-tekst"></p>
+            <ul id="skub-liste"></ul>
         </div>
-        <select id="ferie-select" onchange="gemFerie()">
-            <option value="0">Ingen</option>
-            <option value="0.5">½ dag</option>
-            <option value="1">1 dag</option>
-            <option value="1.5">1½ dag</option>
-            <option value="2">2 dage</option>
-            <option value="2.5">2½ dage</option>
-            <option value="3">3 dage</option>
-            <option value="3.5">3½ dage</option>
-            <option value="4">4 dage</option>
-            <option value="4.5">4½ dage</option>
-            <option value="5">5 dage (hele ugen)</option>
-        </select>
+
+        <!-- Ugejustering -->
+        <div class="ugejustering">
+            <div>
+                <label>Ferie/fravær denne uge</label>
+                <small>Kun for den valgte uge</small>
+            </div>
+            <select id="ferie-select" onchange="gemFerie()">
+                <option value="0">Ingen</option>
+                <option value="0.5">½ dag</option>
+                <option value="1">1 dag</option>
+                <option value="1.5">1½ dag</option>
+                <option value="2">2 dage</option>
+                <option value="2.5">2½ dage</option>
+                <option value="3">3 dage</option>
+                <option value="3.5">3½ dage</option>
+                <option value="4">4 dage</option>
+                <option value="4.5">4½ dage</option>
+                <option value="5">5 dage (hele ugen)</option>
+            </select>
+        </div>
+
+        <!-- Hurtig-tilføj -->
+        <div class="hurtig-tilføj">
+            <input class="hurtig-navn" type="text" id="hurtig-navn"
+                   placeholder="Skriv en opgave og tryk Enter..."
+                   onkeydown="hurtigEnter(event)">
+            <select class="hurtig-dage" id="hurtig-dage">
+                <option value="0.5">½ dag</option>
+                <option value="1" selected>1 dag</option>
+                <option value="1.5">1½ dag</option>
+                <option value="2">2 dage</option>
+                <option value="2.5">2½ dage</option>
+                <option value="3">3 dage</option>
+                <option value="4">4 dage</option>
+                <option value="5">5 dage</option>
+            </select>
+            <button class="hurtig-tilføj-knap" onclick="hurtigTilføj()">+ Tilføj</button>
+        </div>
+
+        <!-- Opgaveliste -->
+        <div class="sektion-header">
+            <div class="sektion-titel">Opgaver denne uge</div>
+            <button class="tilføj-detaljer-knap" onclick="åbnDetaljerModal()">+ Med detaljer</button>
+        </div>
+        <div id="opgave-liste"></div>
+        <div class="færdige-header" id="færdige-header" onclick="toggleFærdige()">
+            <span id="færdige-ikon">▶</span>
+            <span id="færdige-tekst">Færdige opgaver</span>
+        </div>
+        <div class="færdige-liste" id="færdige-liste"></div>
+
+    </div><!-- /uge-visning -->
+
+    <!-- ══ DAG VISNING ══ -->
+    <div class="dag-visning" id="dag-visning">
+        <div id="dag-rækker"></div>
+        <div id="uplacerede-wrapper"></div>
     </div>
 
-    <!-- Hurtig-tilføj -->
-    <div class="hurtig-tilføj">
-        <input class="hurtig-navn" type="text" id="hurtig-navn"
-               placeholder="Skriv en opgave og tryk Enter..."
-               onkeydown="hurtigEnter(event)">
-        <select class="hurtig-dage" id="hurtig-dage">
-            <option value="0.5">½ dag</option>
-            <option value="1" selected>1 dag</option>
-            <option value="1.5">1½ dag</option>
-            <option value="2">2 dage</option>
-            <option value="2.5">2½ dage</option>
-            <option value="3">3 dage</option>
-            <option value="4">4 dage</option>
-            <option value="5">5 dage</option>
-        </select>
-        <button class="hurtig-tilføj-knap" onclick="hurtigTilføj()">+ Tilføj</button>
-    </div>
+</div><!-- /container -->
 
-    <!-- Opgaver -->
-    <div class="sektion-header">
-        <div class="sektion-titel" id="opgave-sektion-titel">Opgaver denne uge</div>
-        <button class="tilføj-detaljer-knap" onclick="åbnDetaljerModal()">+ Med detaljer</button>
-    </div>
-
-    <div id="opgave-liste"></div>
-
-    <div class="færdige-header" id="færdige-header" onclick="toggleFærdige()">
-        <span id="færdige-ikon">▶</span>
-        <span id="færdige-tekst">Færdige opgaver</span>
-    </div>
-    <div class="færdige-liste" id="færdige-liste"></div>
-
-</div>
-
-<!-- ════════════════ DETALJER MODAL ════════════════ -->
+<!-- ════════ DETALJER MODAL ════════ -->
 <div class="modal-overlay" id="detaljer-modal" onclick="luk(event,'detaljer-modal')">
     <div class="modal">
         <div class="modal-header">
             <h2 id="modal-titel">Tilføj opgave med detaljer</h2>
             <button class="luk-knap" onclick="lukModal('detaljer-modal')">✕</button>
         </div>
-
         <input type="hidden" id="redigér-id">
 
         <div class="formular-gruppe">
             <label>Hvad skal løses?</label>
             <input type="text" id="d-navn" placeholder="Skriv opgavens navn..." maxlength="120">
         </div>
-
         <div class="formular-gruppe">
             <label>Hvor lang tid forventer du det tager?</label>
             <select id="d-dage">
@@ -765,12 +593,22 @@
                 <option value="5">5 dage</option>
             </select>
         </div>
-
         <div class="formular-gruppe">
             <label>Hvilken uge?</label>
             <select id="d-uge"></select>
         </div>
-
+        <div class="formular-gruppe">
+            <label>Hvilken dag starter opgaven? <span style="font-size:0.75rem;color:var(--tekst-lys);font-weight:400">(valgfrit)</span></label>
+            <select id="d-startdag">
+                <option value="">Ikke fastlagt endnu</option>
+                <option value="1">Mandag</option>
+                <option value="2">Tirsdag</option>
+                <option value="3">Onsdag</option>
+                <option value="4">Torsdag</option>
+                <option value="5">Fredag</option>
+            </select>
+            <small>Opgaver der strækker sig over flere dage placeres automatisk på de følgende dage</small>
+        </div>
         <div class="formular-gruppe">
             <label>Prioritet</label>
             <div class="prioritet-vælger">
@@ -784,64 +622,53 @@
                     <span class="emoji">🟢</span>Kan vente
                 </div>
             </div>
-            <small>Prioritet hjælper dig med at se hvad du kan skubbe, hvis ugen er for fuld</small>
         </div>
-
         <div class="formular-gruppe">
             <label>Kommentar (valgfrit)</label>
             <input type="text" id="d-kommentar" placeholder="Evt. noter eller afhængigheder...">
         </div>
-
         <button class="gem-knap" onclick="gemDetaljerOpgave()">Gem opgave</button>
     </div>
 </div>
 
-<!-- ════════════════ INDSTILLINGER PANEL ════════════════ -->
+<!-- ════════ INDSTILLINGER PANEL ════════ -->
 <div class="panel-overlay" id="panel-overlay" onclick="lukIndstillinger()"></div>
 <div class="panel" id="indstillinger-panel">
     <div class="panel-header">
         <h2>Indstillinger</h2>
         <button class="luk-knap" onclick="lukIndstillinger()">✕</button>
     </div>
-
     <div class="sektion-divider">Faste indstillinger <span class="fast-tag">📌 Gælder alle uger</span></div>
-
     <div class="formular-gruppe">
         <label>Arbejdstimer pr. uge</label>
         <input type="number" id="ind-arbejdstimer" min="1" max="60" step="0.5" value="37">
         <small>Din normale arbejdsuge — typisk 37 timer</small>
     </div>
-
     <div class="formular-gruppe">
         <label>Timer pr. arbejdsdag</label>
         <input type="number" id="ind-timer-pr-dag" min="1" max="12" step="0.1" value="7.4">
-        <small>Bruges til at omregne dage til timer. 37 timer ÷ 5 dage = 7,4 timer/dag</small>
+        <small>37 timer ÷ 5 dage = 7,4 timer/dag</small>
     </div>
-
     <div class="formular-gruppe">
         <label>Faste ugentlige møder (timer)</label>
         <input type="number" id="ind-møder" min="0" max="30" step="0.5" value="5">
-        <small>Tilbagevendende møder du altid har — tavlemøder, 1:1s, statusmøder osv.</small>
+        <small>Tilbagevendende møder du altid har</small>
     </div>
-
     <div class="formular-gruppe">
         <label>Buffer til uplanlagt arbejde (timer)</label>
         <input type="number" id="ind-adhoc" min="0" max="20" step="0.5" value="5">
-        <small>Tid til mails, akutte opgaver og ting der bare dukker op</small>
+        <small>Tid til mails og akutte opgaver</small>
     </div>
-
     <div class="formular-gruppe">
         <label>Fokus-faktor</label>
         <input type="number" id="ind-fokus" min="0.1" max="1" step="0.05" value="0.75">
-        <small>Hvor stor en del af din tid kan reelt bruges på planlagte opgaver? (0,75 = 75%)</small>
+        <small>Andel af tid til planlagte opgaver (0,75 = 75%)</small>
     </div>
-
     <div class="kapacitet-info" id="kapacitet-info-tekst"></div>
-
     <button class="gem-indstillinger-knap" onclick="gemIndstillinger()">Gem indstillinger</button>
 </div>
 
-<!-- ════════════════ STØT PROJEKTET ════════════════ -->
+<!-- ════════ STØT ════════ -->
 <div class="støt-sektion">
     <p>Værktøjet er gratis og reklamefrit. En kop kaffe holder projektet i live.</p>
     <div class="support-btns">
@@ -855,125 +682,112 @@
     &copy; 2026 Ditte Mi Petræus &middot; Udgivet under <a href="LICENSE">MIT-licens</a>
 </footer>
 
-<!-- ════════════════ TOAST ════════════════ -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── KONSTANTER & STATE ───────────────────────────────────────────────────────
+// ─── KONSTANTER ───────────────────────────────────────────────────────────────
 
 const STD = { arbejdstimer: 37, timerPrDag: 7.4, møder: 5, adhoc: 5, fokus: 0.75 };
+const DAGE_NAVNE = ['', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag'];
+const DAGE_KORT  = ['', 'Man',   'Tir',     'Ons',    'Tor',     'Fre'   ];
 
 let valgteUge      = { år: 0, uge: 0 };
 let valgtPrioritet = 1;
 let visFærdige     = false;
+let aktivVisning   = 'uge'; // 'uge' | 'dag'
 
 // ─── STORAGE ─────────────────────────────────────────────────────────────────
 
-const hentInd = () => {
-    const g = localStorage.getItem('kap_ind');
-    return g ? { ...STD, ...JSON.parse(g) } : { ...STD };
-};
+const hentInd     = () => { const g = localStorage.getItem('kap_ind'); return g ? { ...STD, ...JSON.parse(g) } : { ...STD }; };
 const hentOpgaver = () => JSON.parse(localStorage.getItem('kap_opgaver') || '[]');
 const gemOpgaverLS = o => localStorage.setItem('kap_opgaver', JSON.stringify(o));
-
-const hentUgeData = nøgle => {
-    const alle = JSON.parse(localStorage.getItem('kap_uger') || '{}');
-    return alle[nøgle] || { ferie: 0 };
-};
-const gemUgeData = (nøgle, data) => {
-    const alle = JSON.parse(localStorage.getItem('kap_uger') || '{}');
-    alle[nøgle] = { ...hentUgeData(nøgle), ...data };
-    localStorage.setItem('kap_uger', JSON.stringify(alle));
-};
+const hentUgeData  = n => { const a = JSON.parse(localStorage.getItem('kap_uger') || '{}'); return a[n] || { ferie: 0 }; };
+const gemUgeData   = (n, d) => { const a = JSON.parse(localStorage.getItem('kap_uger') || '{}'); a[n] = { ...hentUgeData(n), ...d }; localStorage.setItem('kap_uger', JSON.stringify(a)); };
 
 // ─── UGE-BEREGNING ───────────────────────────────────────────────────────────
 
 function isoUge(dato) {
-    const d = new Date(dato);
-    d.setHours(0,0,0,0);
+    const d = new Date(dato); d.setHours(0,0,0,0);
     d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
-    const uge1 = new Date(d.getFullYear(), 0, 4);
-    return 1 + Math.round(((d - uge1) / 86400000 - 3 + (uge1.getDay() + 6) % 7) / 7);
+    const u1 = new Date(d.getFullYear(), 0, 4);
+    return 1 + Math.round(((d - u1) / 86400000 - 3 + (u1.getDay() + 6) % 7) / 7);
 }
-function isoÅr(dato) {
-    const d = new Date(dato);
-    d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
-    return d.getFullYear();
-}
-function nøgle(år, uge) {
-    return `${år}-W${String(uge).padStart(2,'0')}`;
-}
+function isoÅr(dato) { const d = new Date(dato); d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7); return d.getFullYear(); }
+function nøgle(år, uge) { return `${år}-W${String(uge).padStart(2,'0')}`; }
 function mandag(år, uge) {
-    const j = new Date(år, 0, 4);
-    const d = j.getDay() || 7;
-    const m = new Date(j);
-    m.setDate(j.getDate() - d + 1 + (uge - 1) * 7);
+    const j = new Date(år, 0, 4), dj = j.getDay() || 7, m = new Date(j);
+    m.setDate(j.getDate() - dj + 1 + (uge - 1) * 7); return m;
+}
+function dagDato(år, uge, dagNr) { // dagNr: 1=man ... 5=fre
+    const m = mandag(år, uge);
+    m.setDate(m.getDate() + dagNr - 1);
     return m;
+}
+function formatDato(dato) {
+    return dato.toLocaleDateString('da-DK', { day: 'numeric', month: 'short' });
 }
 
 function skiftUge(delta) {
     const m = mandag(valgteUge.år, valgteUge.uge);
     m.setDate(m.getDate() + delta * 7);
-    valgteUge.år = isoÅr(m);
-    valgteUge.uge = isoUge(m);
+    valgteUge.år = isoÅr(m); valgteUge.uge = isoUge(m);
     opdater();
 }
 function gåTilDenneUge() {
-    const nu = new Date();
-    valgteUge.år = isoÅr(nu);
-    valgteUge.uge = isoUge(nu);
-    opdater();
+    const nu = new Date(); valgteUge.år = isoÅr(nu); valgteUge.uge = isoUge(nu); opdater();
 }
 
 // ─── FORMATERING ─────────────────────────────────────────────────────────────
 
 function formatDage(d) {
-    d = Math.round(d * 2) / 2; // rund til nærmeste halve
+    d = Math.round(d * 2) / 2;
     if (d === 0)   return '0 dage';
     if (d === 0.5) return '½ dag';
     if (d === 1)   return '1 dag';
-    const hel  = Math.floor(d);
-    const halv = d % 1 === 0.5;
-    if (halv) return `${hel}½ dag`;
-    return `${hel} dage`;
+    const hel = Math.floor(d), halv = d % 1 === 0.5;
+    return halv ? `${hel}½ dag` : `${hel} dage`;
 }
 
 // ─── KAPACITETSBEREGNING ─────────────────────────────────────────────────────
 
 function beregnKapacitetTimer(år, uge) {
-    const ind    = hentInd();
-    const ferieDage = parseFloat(hentUgeData(nøgle(år, uge)).ferie) || 0;
+    const ind = hentInd();
+    const ferieDage  = parseFloat(hentUgeData(nøgle(år, uge)).ferie) || 0;
     const ferieTimer = ferieDage * ind.timerPrDag;
-    const netto  = ind.arbejdstimer - ind.møder - ind.adhoc - ferieTimer;
+    const netto = ind.arbejdstimer - ind.møder - ind.adhoc - ferieTimer;
     return Math.max(0, Math.round(netto * ind.fokus * 10) / 10);
 }
-
 function beregnKapacitetDage(år, uge) {
-    const ind = hentInd();
-    return beregnKapacitetTimer(år, uge) / ind.timerPrDag;
+    return beregnKapacitetTimer(år, uge) / hentInd().timerPrDag;
+}
+function beregnPlanlagtDage(år, uge) {
+    return hentOpgaver()
+        .filter(o => o.uge === nøgle(år, uge) && o.status !== 'færdig')
+        .reduce((s, o) => s + (parseFloat(o.dage) || 0), 0);
 }
 
-function beregnPlanlagtDage(år, uge) {
-    const n = nøgle(år, uge);
-    return hentOpgaver()
-        .filter(o => o.uge === n && o.status !== 'færdig')
-        .reduce((s, o) => s + (parseFloat(o.dage) || 0), 0);
+// ─── VISNING TOGGLE ──────────────────────────────────────────────────────────
+
+function skiftVisning(v) {
+    aktivVisning = v;
+    document.getElementById('uge-visning').style.display = v === 'uge' ? 'block' : 'none';
+    document.getElementById('dag-visning').classList.toggle('vis', v === 'dag');
+    document.getElementById('toggle-uge').classList.toggle('aktiv', v === 'uge');
+    document.getElementById('toggle-dag').classList.toggle('aktiv', v === 'dag');
+    opdater();
 }
 
 // ─── OPDATER SIDE ────────────────────────────────────────────────────────────
 
 function opdater() {
-    const n           = nøgle(valgteUge.år, valgteUge.uge);
-    const kapDage     = beregnKapacitetDage(valgteUge.år, valgteUge.uge);
-    const planDage    = beregnPlanlagtDage(valgteUge.år, valgteUge.uge);
-    const udnyttelse  = kapDage > 0 ? planDage / kapDage : (planDage > 0 ? 2 : 0);
-    const ind         = hentInd();
-    const ugedata     = hentUgeData(n);
+    const n          = nøgle(valgteUge.år, valgteUge.uge);
+    const kapDage    = beregnKapacitetDage(valgteUge.år, valgteUge.uge);
+    const planDage   = beregnPlanlagtDage(valgteUge.år, valgteUge.uge);
+    const udnyttelse = kapDage > 0 ? planDage / kapDage : (planDage > 0 ? 2 : 0);
+    const ind        = hentInd();
+    const ugedata    = hentUgeData(n);
 
-    // Uge-label
     document.getElementById('uge-label').textContent = `Uge ${valgteUge.uge} · ${valgteUge.år}`;
-
-    // Ferie-select
     document.getElementById('ferie-select').value = ugedata.ferie || 0;
 
     // Status badge
@@ -990,58 +804,47 @@ function opdater() {
         badge.textContent = planDage === 0 ? '⬜ Ingen planlagte opgaver' : '🟢 OK — du har luft';
     }
 
-    // Timer og bar
-    document.getElementById('planlagt-dage').innerHTML =
-        `${formatDage(planDage)} <span>planlagt</span>`;
-    document.getElementById('rest-tekst').textContent =
-        `af ${formatDage(kapDage)}`;
+    document.getElementById('planlagt-dage').innerHTML = `${formatDage(planDage)} <span>planlagt</span>`;
+    document.getElementById('rest-tekst').textContent  = `af ${formatDage(kapDage)}`;
 
     const bar = document.getElementById('kapacitet-bar');
     bar.style.width = Math.min(100, Math.round(udnyttelse * 100)) + '%';
-    bar.className = 'bar-fyld ' +
-        (udnyttelse > 1 ? 'bar-over' : udnyttelse > 0.85 ? 'bar-presset' : 'bar-ok');
+    bar.className = 'bar-fyld ' + (udnyttelse > 1 ? 'bar-over' : udnyttelse > 0.85 ? 'bar-presset' : 'bar-ok');
 
-    // Detaljer
     document.getElementById('detalje-kapacitet').textContent = formatDage(kapDage);
     document.getElementById('detalje-ferie').textContent     = formatDage(ugedata.ferie || 0);
     document.getElementById('detalje-møder').textContent     = ind.møder + ' t';
 
-    // Skub-banner
     opdaterSkubBanner(n, udnyttelse);
-
-    // Opgaveliste
     opdaterOpgaveListe(n);
+    if (aktivVisning === 'dag') opdaterDagVisning(n);
 }
+
+// ─── SKUB BANNER ─────────────────────────────────────────────────────────────
 
 function opdaterSkubBanner(n, udnyttelse) {
     const banner = document.getElementById('skub-banner');
-    if (udnyttelse <= 0.85) {
-        banner.classList.remove('vis', 'presset', 'over');
-        return;
-    }
-
+    if (udnyttelse <= 0.85) { banner.classList.remove('vis', 'presset', 'over'); return; }
     const kandidater = hentOpgaver()
         .filter(o => o.uge === n && o.status !== 'færdig')
-        .sort((a, b) => b.prioritet - a.prioritet)
-        .slice(0, 3);
-
+        .sort((a, b) => b.prioritet - a.prioritet).slice(0, 3);
     const erOver = udnyttelse > 1;
     banner.className = 'skub-banner vis ' + (erOver ? 'over' : 'presset');
     document.getElementById('skub-tekst').textContent = erOver
-        ? '🔴 Du har for meget denne uge. Her er hvad du kan overveje at skubbe:'
+        ? '🔴 Du har for meget denne uge. Overvej at skubbe disse:'
         : '🟡 Ugen er presset. Overvej om disse kan flyttes:';
-
     document.getElementById('skub-liste').innerHTML = kandidater.map(o =>
-        `<li>"${o.navn}" — ${formatDage(o.dage)} (${prioritetLabel(o.prioritet)})</li>`
-    ).join('');
+        `<li>"${o.navn}" — ${formatDage(o.dage)} (${prioritetLabel(o.prioritet)})</li>`).join('');
 }
+
+// ─── UGE OPGAVELISTE ─────────────────────────────────────────────────────────
 
 function opdaterOpgaveListe(n) {
     const alle    = hentOpgaver().filter(o => o.uge === n);
     const aktive  = alle.filter(o => o.status !== 'færdig').sort((a,b) => a.prioritet - b.prioritet);
     const færdige = alle.filter(o => o.status === 'færdig');
+    const liste   = document.getElementById('opgave-liste');
 
-    const liste = document.getElementById('opgave-liste');
     liste.innerHTML = aktive.length === 0 && færdige.length === 0
         ? `<div class="ingen-opgaver">📋 Ingen opgaver denne uge<p>Skriv en opgave i feltet ovenfor og tryk Enter</p></div>`
         : aktive.map(kortHTML).join('');
@@ -1055,32 +858,28 @@ function opdaterOpgaveListe(n) {
         fl.classList.toggle('vis', visFærdige);
         document.getElementById('færdige-ikon').textContent = visFærdige ? '▼' : '▶';
     } else {
-        fh.style.display = 'none';
-        fl.innerHTML = '';
+        fh.style.display = 'none'; fl.innerHTML = '';
     }
 }
 
 function kortHTML(o) {
-    const er = o.status === 'færdig';
+    const er         = o.status === 'færdig';
     const statusKls  = { 'ikke-startet':'status-ikke-startet','i-gang':'status-i-gang','færdig':'status-færdig' }[o.status];
     const statusLbl  = { 'ikke-startet':'Ikke startet','i-gang':'I gang','færdig':'Færdig ✓' }[o.status];
-    const pBadge     = { 1:'<span class="badge badge-p1">🔴 Skal løses</span>',
-                         2:'<span class="badge badge-p2">🟡 Bør løses</span>',
-                         3:'<span class="badge badge-p3">🟢 Kan vente</span>' }[o.prioritet] || '';
-    const kommentar  = o.kommentar
-        ? `<span style="font-size:.75rem;color:var(--tekst-lys);display:block;margin-top:.2rem">${o.kommentar}</span>`
-        : '';
+    const pBadge     = { 1:'<span class="badge badge-p1">🔴 Skal løses</span>',2:'<span class="badge badge-p2">🟡 Bør løses</span>',3:'<span class="badge badge-p3">🟢 Kan vente</span>' }[o.prioritet] || '';
+    const dagBadge   = o.startdag ? `<span class="badge badge-dag">📆 ${DAGE_NAVNE[o.startdag]}</span>` : '';
+    const kommentar  = o.kommentar ? `<span style="font-size:.75rem;color:var(--tekst-lys);display:block;margin-top:.2rem">${o.kommentar}</span>` : '';
     return `
     <div class="opgave-kort${er ? ' færdig' : ''}">
         <div class="kryds-wrapper" onclick="toggleFærdig('${o.id}')">
-            <input type="checkbox" ${er ? 'checked' : ''}>
-            <div class="kryds-boks"></div>
+            <input type="checkbox" ${er ? 'checked' : ''}><div class="kryds-boks"></div>
         </div>
         <div class="opgave-indhold">
             <div class="opgave-navn" onclick="redigérOpgave('${o.id}')" title="Klik for at redigere">${o.navn} <span style="font-size:.7rem;color:var(--tekst-lys);font-weight:400">✏️</span></div>
             <div class="opgave-meta">
                 ${pBadge}
                 <span class="badge badge-dage">📅 ${formatDage(o.dage)}</span>
+                ${dagBadge}
                 <button class="status-knap ${statusKls}" onclick="cyklusStatus('${o.id}')">${statusLbl}</button>
             </div>
             ${kommentar}
@@ -1089,29 +888,113 @@ function kortHTML(o) {
     </div>`;
 }
 
-function prioritetLabel(p) {
-    return { 1:'Skal løses', 2:'Bør løses', 3:'Kan vente' }[p] || '';
+// ─── DAG VISNING ─────────────────────────────────────────────────────────────
+
+function opdaterDagVisning(n) {
+    const kapDage    = beregnKapacitetDage(valgteUge.år, valgteUge.uge);
+    const dagKap     = kapDage / 5; // kapacitet pr. dag
+    const alle       = hentOpgaver().filter(o => o.uge === n);
+    const uplacerede = alle.filter(o => !o.startdag && o.status !== 'færdig');
+
+    // Byg dag-rækker
+    let rækkerHTML = '';
+    for (let dagNr = 1; dagNr <= 5; dagNr++) {
+        const dato       = dagDato(valgteUge.år, valgteUge.uge, dagNr);
+        const datoLabel  = formatDato(dato);
+        const opgaverIDag = hentOpgaverForDag(alle, dagNr);
+        const planlagtDag = opgaverIDag
+            .filter(o => o.status !== 'færdig')
+            .reduce((s, o) => s + dagBidrag(o, dagNr), 0);
+        const udnyttelse  = dagKap > 0 ? planlagtDag / dagKap : 0;
+
+        const barKls  = udnyttelse > 1 ? 'bar-over' : udnyttelse > 0.85 ? 'bar-presset' : 'bar-ok';
+        const statTxt = udnyttelse > 1   ? 'FULDT'
+                      : udnyttelse > 0.85 ? 'Presset'
+                      : planlagtDag === 0  ? 'Ledig'
+                      : formatDage(planlagtDag);
+        const statKls = udnyttelse > 1 ? 'over' : udnyttelse > 0.85 ? 'presset' : '';
+        const pct     = Math.min(100, Math.round(udnyttelse * 100));
+
+        const chipsHTML = opgaverIDag.length === 0
+            ? `<div class="dag-ledig">Ingen opgaver planlagt</div>`
+            : opgaverIDag.map(o => dagChipHTML(o, dagNr)).join('');
+
+        rækkerHTML += `
+        <div class="dag-række">
+            <div class="dag-header">
+                <div class="dag-navn">${DAGE_NAVNE[dagNr]}<small>${datoLabel}</small></div>
+                <div class="dag-bar-ydre"><div class="dag-bar-fyld ${barKls}" style="width:${pct}%"></div></div>
+                <div class="dag-status ${statKls}">${statTxt}</div>
+            </div>
+            <div class="dag-opgaver-liste">${chipsHTML}</div>
+        </div>`;
+    }
+    document.getElementById('dag-rækker').innerHTML = rækkerHTML;
+
+    // Uplacerede
+    if (uplacerede.length > 0) {
+        const chipsHTML = uplacerede.map(o =>
+            `<span class="uplacerede-chip" onclick="redigérOpgave('${o.id}')">
+                📅 ${o.navn} <span style="font-size:.7rem;color:var(--tekst-lys)">${formatDage(o.dage)}</span>
+            </span>`
+        ).join('');
+        document.getElementById('uplacerede-wrapper').innerHTML = `
+            <div class="uplacerede-sektion">
+                <div class="uplacerede-titel">📌 Ikke placeret på en dag endnu — klik for at tilføje startdag</div>
+                ${chipsHTML}
+            </div>`;
+    } else {
+        document.getElementById('uplacerede-wrapper').innerHTML = '';
+    }
 }
+
+function hentOpgaverForDag(alle, dagNr) {
+    return alle.filter(o => {
+        if (!o.startdag) return false;
+        const start = parseInt(o.startdag);
+        const slut  = Math.min(5, start + Math.ceil(o.dage) - 1);
+        return dagNr >= start && dagNr <= slut;
+    });
+}
+
+function dagBidrag(o, dagNr) {
+    // Hvor mange dage bidrager denne opgave med på denne dag?
+    // Altid 1 hel dag per dag den fylder, medmindre det er den sidste dag og dage er en halv
+    const start       = parseInt(o.startdag);
+    const totalDage   = parseFloat(o.dage);
+    const slut        = start + Math.ceil(totalDage) - 1;
+    const erSidsteDag = dagNr === Math.min(5, slut);
+    const rest        = totalDage % 1;
+    if (erSidsteDag && rest === 0.5) return 0.5;
+    return 1;
+}
+
+function dagChipHTML(o, dagNr) {
+    const start     = parseInt(o.startdag);
+    const totalDage = parseFloat(o.dage);
+    const slut      = Math.min(5, start + Math.ceil(totalDage) - 1);
+    const spanTekst = slut > start ? `dag ${dagNr - start + 1}/${slut - start + 1}` : '';
+    const erFærdig  = o.status === 'færdig';
+    const krydsIkon = erFærdig ? '✓' : '';
+    return `
+    <div class="dag-opgave-chip${erFærdig ? ' færdig' : ''}" onclick="redigérOpgave('${o.id}')">
+        <div class="chip-kryds" onclick="event.stopPropagation();toggleFærdig('${o.id}')">${krydsIkon}</div>
+        <span class="chip-navn">${o.navn}</span>
+        ${spanTekst ? `<span class="chip-span">${spanTekst}</span>` : ''}
+    </div>`;
+}
+
+function prioritetLabel(p) { return { 1:'Skal løses', 2:'Bør løses', 3:'Kan vente' }[p] || ''; }
 
 // ─── HURTIG-TILFØJ ───────────────────────────────────────────────────────────
 
 function hurtigEnter(e) { if (e.key === 'Enter') hurtigTilføj(); }
-
 function hurtigTilføj() {
     const navn = document.getElementById('hurtig-navn').value.trim();
     const dage = parseFloat(document.getElementById('hurtig-dage').value);
     if (!navn) { document.getElementById('hurtig-navn').focus(); return; }
-
     const opgaver = hentOpgaver();
-    opgaver.push({
-        id: Date.now().toString(),
-        navn,
-        dage,
-        uge: nøgle(valgteUge.år, valgteUge.uge),
-        prioritet: 2,
-        status: 'ikke-startet',
-        kommentar: ''
-    });
+    opgaver.push({ id: Date.now().toString(), navn, dage, uge: nøgle(valgteUge.år, valgteUge.uge), prioritet: 2, status: 'ikke-startet', kommentar: '', startdag: null });
     gemOpgaverLS(opgaver);
     document.getElementById('hurtig-navn').value = '';
     document.getElementById('hurtig-dage').value = '1';
@@ -1124,28 +1007,25 @@ function hurtigTilføj() {
 function byggUgeOptions(valgNøgle) {
     const sel = document.getElementById('d-uge');
     sel.innerHTML = '';
-    const labels = ['Denne uge', 'Næste uge', 'Om 2 uger', 'Om 3 uger', 'Om 4 uger',
-                    'Om 5 uger', 'Om 6 uger', 'Om 7 uger', 'Om 8 uger'];
+    const labels = ['Denne uge','Næste uge','Om 2 uger','Om 3 uger','Om 4 uger','Om 5 uger','Om 6 uger','Om 7 uger','Om 8 uger'];
     for (let i = 0; i < 9; i++) {
         const m = mandag(valgteUge.år, valgteUge.uge);
         m.setDate(m.getDate() + i * 7);
-        const år  = isoÅr(m);
-        const uge = isoUge(m);
-        const n   = nøgle(år, uge);
+        const år = isoÅr(m), uge = isoUge(m), n = nøgle(år, uge);
         const opt = document.createElement('option');
-        opt.value = n;
-        opt.textContent = `${labels[i]} (uge ${uge})`;
+        opt.value = n; opt.textContent = `${labels[i]} (uge ${uge})`;
         if (n === valgNøgle) opt.selected = true;
         sel.appendChild(opt);
     }
 }
 
-function åbnDetaljerModal() {
+function åbnDetaljerModal(startdagForudfyldt) {
     document.getElementById('modal-titel').textContent = 'Tilføj opgave med detaljer';
     document.getElementById('redigér-id').value = '';
     document.getElementById('d-navn').value = '';
     document.getElementById('d-dage').value = '1';
     document.getElementById('d-kommentar').value = '';
+    document.getElementById('d-startdag').value = startdagForudfyldt || '';
     vælgPrioritet(1);
     byggUgeOptions(nøgle(valgteUge.år, valgteUge.uge));
     document.getElementById('detaljer-modal').classList.add('vis');
@@ -1160,6 +1040,7 @@ function redigérOpgave(id) {
     document.getElementById('d-navn').value = o.navn;
     document.getElementById('d-dage').value = o.dage;
     document.getElementById('d-kommentar').value = o.kommentar || '';
+    document.getElementById('d-startdag').value = o.startdag || '';
     vælgPrioritet(o.prioritet);
     byggUgeOptions(o.uge);
     document.getElementById('detaljer-modal').classList.add('vis');
@@ -1174,21 +1055,22 @@ function vælgPrioritet(p) {
 }
 
 function gemDetaljerOpgave() {
-    const navn     = document.getElementById('d-navn').value.trim();
-    const dage     = parseFloat(document.getElementById('d-dage').value);
-    const ugeVal   = document.getElementById('d-uge').value;
+    const navn      = document.getElementById('d-navn').value.trim();
+    const dage      = parseFloat(document.getElementById('d-dage').value);
+    const ugeVal    = document.getElementById('d-uge').value;
+    const startdag  = document.getElementById('d-startdag').value;
     const kommentar = document.getElementById('d-kommentar').value.trim();
-    const rId      = document.getElementById('redigér-id').value;
+    const rId       = document.getElementById('redigér-id').value;
 
     if (!navn) { document.getElementById('d-navn').focus(); visToast('Skriv et opgavenavn'); return; }
 
     const opgaver = hentOpgaver();
     if (rId) {
         const o = opgaver.find(x => x.id === rId);
-        if (o) { o.navn = navn; o.dage = dage; o.uge = ugeVal; o.prioritet = valgtPrioritet; o.kommentar = kommentar; }
+        if (o) { o.navn = navn; o.dage = dage; o.uge = ugeVal; o.prioritet = valgtPrioritet; o.kommentar = kommentar; o.startdag = startdag ? parseInt(startdag) : null; }
         visToast('Opgave opdateret');
     } else {
-        opgaver.push({ id: Date.now().toString(), navn, dage, uge: ugeVal, prioritet: valgtPrioritet, status: 'ikke-startet', kommentar });
+        opgaver.push({ id: Date.now().toString(), navn, dage, uge: ugeVal, prioritet: valgtPrioritet, status: 'ikke-startet', kommentar, startdag: startdag ? parseInt(startdag) : null });
         visToast('Opgave tilføjet');
     }
     gemOpgaverLS(opgaver);
@@ -1199,32 +1081,21 @@ function gemDetaljerOpgave() {
 // ─── OPGAVE-HANDLINGER ───────────────────────────────────────────────────────
 
 function toggleFærdig(id) {
-    const opgaver = hentOpgaver();
-    const o = opgaver.find(x => x.id === id);
+    const opgaver = hentOpgaver(), o = opgaver.find(x => x.id === id);
     if (!o) return;
     o.status = o.status === 'færdig' ? 'ikke-startet' : 'færdig';
-    gemOpgaverLS(opgaver);
-    opdater();
+    gemOpgaverLS(opgaver); opdater();
     if (o.status === 'færdig') visToast('✓ Opgave markeret som færdig!');
 }
-
 function cyklusStatus(id) {
-    const opgaver = hentOpgaver();
-    const o = opgaver.find(x => x.id === id);
+    const opgaver = hentOpgaver(), o = opgaver.find(x => x.id === id);
     if (!o) return;
     const c = ['ikke-startet','i-gang','færdig'];
     o.status = c[(c.indexOf(o.status) + 1) % 3];
-    gemOpgaverLS(opgaver);
-    opdater();
+    gemOpgaverLS(opgaver); opdater();
     if (o.status === 'færdig') visToast('✓ Opgave markeret som færdig!');
 }
-
-function sletOpgave(id) {
-    gemOpgaverLS(hentOpgaver().filter(x => x.id !== id));
-    opdater();
-    visToast('Opgave slettet');
-}
-
+function sletOpgave(id) { gemOpgaverLS(hentOpgaver().filter(x => x.id !== id)); opdater(); visToast('Opgave slettet'); }
 function toggleFærdige() {
     visFærdige = !visFærdige;
     document.getElementById('færdige-liste').classList.toggle('vis', visFærdige);
@@ -1235,45 +1106,39 @@ function toggleFærdige() {
 
 function gemFerie() {
     const ferie = parseFloat(document.getElementById('ferie-select').value) || 0;
-    gemUgeData(nøgle(valgteUge.år, valgteUge.uge), { ferie });
-    opdater();
+    gemUgeData(nøgle(valgteUge.år, valgteUge.uge), { ferie }); opdater();
 }
 
 // ─── INDSTILLINGER ───────────────────────────────────────────────────────────
 
 function åbnIndstillinger() {
     const ind = hentInd();
-    document.getElementById('ind-arbejdstimer').value  = ind.arbejdstimer;
-    document.getElementById('ind-timer-pr-dag').value  = ind.timerPrDag;
-    document.getElementById('ind-møder').value         = ind.møder;
-    document.getElementById('ind-adhoc').value         = ind.adhoc;
-    document.getElementById('ind-fokus').value         = ind.fokus;
+    document.getElementById('ind-arbejdstimer').value = ind.arbejdstimer;
+    document.getElementById('ind-timer-pr-dag').value = ind.timerPrDag;
+    document.getElementById('ind-møder').value        = ind.møder;
+    document.getElementById('ind-adhoc').value        = ind.adhoc;
+    document.getElementById('ind-fokus').value        = ind.fokus;
     opdaterKapacitetInfo();
     ['ind-arbejdstimer','ind-timer-pr-dag','ind-møder','ind-adhoc','ind-fokus']
         .forEach(id => document.getElementById(id).oninput = opdaterKapacitetInfo);
     document.getElementById('panel-overlay').classList.add('vis');
     document.getElementById('indstillinger-panel').classList.add('vis');
 }
-
 function opdaterKapacitetInfo() {
     const at  = parseFloat(document.getElementById('ind-arbejdstimer').value) || 37;
     const tpd = parseFloat(document.getElementById('ind-timer-pr-dag').value) || 7.4;
     const m   = parseFloat(document.getElementById('ind-møder').value) || 0;
     const a   = parseFloat(document.getElementById('ind-adhoc').value) || 0;
     const f   = parseFloat(document.getElementById('ind-fokus').value) || 0.75;
-    const netto = at - m - a;
-    const kap   = Math.round(Math.max(0, netto * f) * 10) / 10;
-    const dag   = Math.round(kap / tpd * 2) / 2;
+    const kap = Math.round(Math.max(0, (at - m - a) * f) * 10) / 10;
+    const dag = Math.round(kap / tpd * 2) / 2;
     document.getElementById('kapacitet-info-tekst').innerHTML =
-        `(${at}t − ${m}t møder − ${a}t buffer) × ${f} = <strong>${kap} timer pr. uge</strong><br>
-         Svarende til ca. <strong>${formatDage(dag)} planlagt tid om ugen</strong>`;
+        `(${at}t − ${m}t møder − ${a}t buffer) × ${f} = <strong>${kap} timer pr. uge</strong><br>Svarende til ca. <strong>${formatDage(dag)} planlagt tid om ugen</strong>`;
 }
-
 function lukIndstillinger() {
     document.getElementById('panel-overlay').classList.remove('vis');
     document.getElementById('indstillinger-panel').classList.remove('vis');
 }
-
 function gemIndstillinger() {
     localStorage.setItem('kap_ind', JSON.stringify({
         arbejdstimer: parseFloat(document.getElementById('ind-arbejdstimer').value) || 37,
@@ -1282,27 +1147,21 @@ function gemIndstillinger() {
         adhoc:        parseFloat(document.getElementById('ind-adhoc').value) || 0,
         fokus:        parseFloat(document.getElementById('ind-fokus').value) || 0.75,
     }));
-    lukIndstillinger();
-    opdater();
-    visToast('✓ Indstillinger gemt');
+    lukIndstillinger(); opdater(); visToast('✓ Indstillinger gemt');
 }
 
 // ─── MODAL HJÆLPERE ──────────────────────────────────────────────────────────
 
 function lukModal(id) { document.getElementById(id).classList.remove('vis'); }
 function luk(e, id)   { if (e.target.id === id) lukModal(id); }
-
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { lukModal('detaljer-modal'); lukIndstillinger(); }
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { lukModal('detaljer-modal'); lukIndstillinger(); } });
 
 // ─── TOAST ───────────────────────────────────────────────────────────────────
 
 let toastTimer;
 function visToast(tekst) {
     const t = document.getElementById('toast');
-    t.textContent = tekst;
-    t.classList.add('vis');
+    t.textContent = tekst; t.classList.add('vis');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => t.classList.remove('vis'), 2200);
 }
