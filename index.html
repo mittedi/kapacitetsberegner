@@ -1270,31 +1270,8 @@ function visToast(tekst) {
 const PROJ_KEY = 'projektoverblik_v5';
 
 const PROJ_SECTIONS = [
-  {
-    id: 'projekter',
-    title: '📁 Projekter',
-    rows: [
-      { navn: 'Vettranet fornyelse', status: 'igang', prio: 'hoj', deadline: '', ansvarlig: 'Ditte', naeste: 'Book møde med IT. Kortlæg eksisterende indhold.' },
-      { navn: 'Løngennemsigtighedsdirektivet og politikker', status: 'ikkest', prio: 'hoj', deadline: '30/05/2026', ansvarlig: 'Ditte', naeste: 'Lav projektinput + præsentation. Book Martin til input og analyse.' },
-      { navn: 'Arbejdsmiljøorganisation og drift heraf', status: 'ikkest', prio: 'hoj', deadline: '30/03/2026', ansvarlig: 'Ditte', naeste: 'Find tidspunkt til online AMO-møde. Book Dorte til godkendelse.' },
-      { navn: 'Sundhedsforsikring — Velliv', status: 'igang', prio: 'middel', deadline: '', ansvarlig: 'Ditte', naeste: 'Book Dorte og Martin til gennemgang. Udarbejd beslutningsskriv.' },
-      { navn: 'Implementering af personalehåndbog', status: 'igang', prio: 'middel', deadline: '', ansvarlig: 'Ditte', naeste: "Orientér FP'er om processen. Drøft implementering med René." },
-      { navn: 'Oprydning på Vettranet', status: 'igang', prio: 'middel', deadline: '31/05/2026', ansvarlig: 'Ditte', naeste: 'Lav projektplan. Fremlæg for Dorte.' },
-      { navn: 'SameSystem → WordPress (medarbejderside)', status: 'afventer', prio: 'middel', deadline: '', ansvarlig: 'Ditte', naeste: 'Afklare API-nøgle, profilbilleder og WordPress-adgang med IT/web.' },
-      { navn: 'Marketing: WordPress klinikstruktur', status: 'pauseret', prio: 'lav', deadline: '', ansvarlig: 'Ditte', naeste: 'Afklaring: kun "Hvem er vi" eller hele kliniksidestruktur?' },
-      { navn: 'Rekruttering: HR assistent', status: 'igang', prio: 'hoj', deadline: '31/03/2026', ansvarlig: 'Ditte', naeste: 'Interviews d. 18. marts. Vurdering og beslutning om kandidater.' },
-    ]
-  },
-  {
-    id: 'udvikling',
-    title: '🔧 Udvikling & forbedringer',
-    rows: [
-      { navn: 'Personalehåndbog — Klinikker', status: 'igang', prio: 'hoj', deadline: '31/03/2026', ansvarlig: 'Ditte', naeste: 'Opfølgende møde med René om input til klinikker.' },
-      { navn: 'Skabeloner: fritstilling og modregning', status: 'ikkest', prio: 'middel', deadline: '31/03/2026', ansvarlig: 'Ditte', naeste: 'Gennemgang og opdatering af skabeloner.' },
-      { navn: 'Lederhåndbog for ledere og klinikker', status: 'igang', prio: 'middel', deadline: '31/03/2026', ansvarlig: 'Ditte', naeste: 'Tale med Martin og Mette angående input.' },
-      { navn: 'Udvikling af eNPS-spørgsmål', status: 'ikkest', prio: 'middel', deadline: '31/05/2026', ansvarlig: 'Ditte', naeste: 'Book EML til gennemgang. Involvér Dorte og René til godkendelse.' },
-    ]
-  },
+  { id: 'projekter', title: '📁 Projekter',              rows: [] },
+  { id: 'udvikling', title: '🔧 Udvikling & forbedringer', rows: [] },
 ];
 
 const PROJ_STATUS_OPTS = { igang: 'I gang', afventer: 'Afventer', pauseret: 'Pauseret', faerdig: 'Færdig', ikkest: 'Ikke startet' };
