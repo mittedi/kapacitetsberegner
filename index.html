@@ -448,6 +448,82 @@
             transition: transform 0.3s ease; white-space: nowrap;
         }
         .toast.vis { transform: translateX(-50%) translateY(0); }
+
+        /* ── PROJEKT VISNING ── */
+        #projekt-visning .proj-section { margin-bottom: 28px; }
+        #projekt-visning .proj-section-header {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 10px; padding-bottom: 7px;
+            border-bottom: 2px solid var(--grøn-mørk);
+        }
+        #projekt-visning .proj-section-title { font-size: 0.95rem; font-weight: 700; color: var(--grøn-mørk); }
+        #projekt-visning .proj-count {
+            background: var(--grøn-mørk); color: white;
+            border-radius: 12px; padding: 1px 8px; font-size: 0.72rem; font-weight: 600;
+        }
+        #projekt-visning .proj-btn-add {
+            background: var(--grøn-meget-lys); color: var(--grøn-mørk);
+            font-size: 0.78rem; padding: 5px 10px; border-radius: 5px;
+            border: none; cursor: pointer; margin-left: auto;
+        }
+        #projekt-visning .proj-btn-add:hover { background: var(--grøn-kant); }
+        #projekt-visning table {
+            width: 100%; border-collapse: collapse; background: white;
+            border-radius: 9px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+        }
+        #projekt-visning thead th {
+            background: #f8fafc; padding: 9px 12px; text-align: left;
+            font-size: 0.72rem; font-weight: 600; color: #64748b;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        #projekt-visning tbody tr { border-top: 1px solid #f1f5f9; }
+        #projekt-visning tbody tr:hover { background: #fafbff; }
+        #projekt-visning td { padding: 8px 12px; font-size: 0.84rem; vertical-align: top; }
+        #projekt-visning [contenteditable] {
+            outline: none; border-radius: 4px; padding: 2px 4px;
+            min-width: 40px; transition: background 0.1s;
+        }
+        #projekt-visning [contenteditable]:focus { background: #eff6ff; outline: 2px solid #3b82f6; }
+        #projekt-visning [contenteditable]:empty:before {
+            content: attr(data-placeholder); color: #cbd5e1; font-style: italic;
+        }
+        #projekt-visning select {
+            border: 1px solid #e2e8f0; border-radius: 5px;
+            padding: 3px 6px; font-size: 0.78rem; cursor: pointer; background: white;
+        }
+        #projekt-visning .ps-igang    { background: #dbeafe; color: #1d4ed8; }
+        #projekt-visning .ps-afventer { background: #fef9c3; color: #92400e; }
+        #projekt-visning .ps-pauseret { background: #f1f5f9; color: #64748b; }
+        #projekt-visning .ps-faerdig  { background: #dcfce7; color: #15803d; }
+        #projekt-visning .ps-ikkest   { background: #fee2e2; color: #b91c1c; }
+        #projekt-visning .pp-hoj    { background: #fff1f2; color: #be123c; }
+        #projekt-visning .pp-middel { background: #fffbeb; color: #b45309; }
+        #projekt-visning .pp-lav    { background: #f8fafc; color: #64748b; }
+        #projekt-visning .proj-deadline-urgent { color: #dc2626; font-weight: 600; }
+        #projekt-visning .proj-deadline-soon   { color: #d97706; font-weight: 500; }
+        #projekt-visning .proj-empty-row td {
+            text-align: center; color: #94a3b8; font-style: italic; padding: 16px;
+        }
+        #projekt-visning .proj-btn-danger {
+            background: #ef4444; color: white; border: none; border-radius: 6px;
+            cursor: pointer; font-size: 0.75rem; padding: 4px 8px;
+        }
+        #projekt-visning .proj-notes-box {
+            background: white; border-radius: 9px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07); padding: 14px 18px;
+        }
+        #projekt-visning .proj-notes-box textarea {
+            width: 100%; min-height: 80px; border: 1px solid #e2e8f0;
+            border-radius: 6px; padding: 8px 10px; font-size: 0.84rem;
+            font-family: inherit; resize: vertical;
+        }
+        #projekt-visning .proj-notes-box textarea:focus { outline: 2px solid #3b82f6; border-color: transparent; }
+        #projekt-visning .proj-save-bar {
+            font-size: 0.78rem; color: #64748b; margin-bottom: 12px;
+            display: flex; justify-content: flex-end; align-items: center; gap: 10px;
+        }
+        #projekt-visning .proj-save-flash { color: #16a34a; font-weight: 500; }
+        @media print { #projekt-visning .proj-btn-danger, #projekt-visning .proj-btn-add { display: none; } }
     </style>
 </head>
 <body>
@@ -476,7 +552,7 @@
     </div>
 
     <!-- Uge-navigation -->
-    <div class="uge-nav">
+    <div class="uge-nav" id="uge-nav-wrapper">
         <button class="uge-nav-knap" onclick="skiftUge(-1)">‹</button>
         <div style="text-align:center">
             <div class="uge-label" id="uge-label">Uge 11 · 2026</div>
@@ -489,6 +565,7 @@
     <div class="visning-toggle">
         <button class="toggle-knap aktiv" id="toggle-uge" onclick="skiftVisning('uge')">📅 Ugeoverblik</button>
         <button class="toggle-knap" id="toggle-dag" onclick="skiftVisning('dag')">📆 Dag for dag</button>
+        <button class="toggle-knap" id="toggle-proj" onclick="skiftVisning('proj')">📋 Projekter</button>
     </div>
 
     <!-- ══ UGE VISNING ══ -->
@@ -574,6 +651,11 @@
     <div class="dag-visning" id="dag-visning">
         <div id="dag-rækker"></div>
         <div id="uplacerede-wrapper"></div>
+    </div>
+
+    <!-- ══ PROJEKT VISNING ══ -->
+    <div id="projekt-visning" style="display:none">
+        <div id="proj-app"></div>
     </div>
 
 </div><!-- /container -->
@@ -785,9 +867,13 @@ function skiftVisning(v) {
     aktivVisning = v;
     document.getElementById('uge-visning').style.display = v === 'uge' ? 'block' : 'none';
     document.getElementById('dag-visning').classList.toggle('vis', v === 'dag');
+    document.getElementById('projekt-visning').style.display = v === 'proj' ? 'block' : 'none';
+    document.getElementById('uge-nav-wrapper').style.display = v === 'proj' ? 'none' : '';
     document.getElementById('toggle-uge').classList.toggle('aktiv', v === 'uge');
     document.getElementById('toggle-dag').classList.toggle('aktiv', v === 'dag');
-    opdater();
+    document.getElementById('toggle-proj').classList.toggle('aktiv', v === 'proj');
+    if (v !== 'proj') opdater();
+    if (v === 'proj') projBygUI();
 }
 
 // ─── OPDATER SIDE ────────────────────────────────────────────────────────────
@@ -1178,6 +1264,204 @@ function visToast(tekst) {
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => t.classList.remove('vis'), 2200);
 }
+
+// ─── PROJEKTOVERBLIK ─────────────────────────────────────────────────────────
+
+const PROJ_KEY = 'projektoverblik_v5';
+
+const PROJ_SECTIONS = [
+  {
+    id: 'projekter',
+    title: '📁 Projekter',
+    rows: [
+      { navn: 'Vettranet fornyelse', status: 'igang', prio: 'hoj', deadline: '', ansvarlig: 'Ditte', naeste: 'Book møde med IT. Kortlæg eksisterende indhold.' },
+      { navn: 'Løngennemsigtighedsdirektivet og politikker', status: 'ikkest', prio: 'hoj', deadline: '30/05/2026', ansvarlig: 'Ditte', naeste: 'Lav projektinput + præsentation. Book Martin til input og analyse.' },
+      { navn: 'Arbejdsmiljøorganisation og drift heraf', status: 'ikkest', prio: 'hoj', deadline: '30/03/2026', ansvarlig: 'Ditte', naeste: 'Find tidspunkt til online AMO-møde. Book Dorte til godkendelse.' },
+      { navn: 'Sundhedsforsikring — Velliv', status: 'igang', prio: 'middel', deadline: '', ansvarlig: 'Ditte', naeste: 'Book Dorte og Martin til gennemgang. Udarbejd beslutningsskriv.' },
+      { navn: 'Implementering af personalehåndbog', status: 'igang', prio: 'middel', deadline: '', ansvarlig: 'Ditte', naeste: "Orientér FP'er om processen. Drøft implementering med René." },
+      { navn: 'Oprydning på Vettranet', status: 'igang', prio: 'middel', deadline: '31/05/2026', ansvarlig: 'Ditte', naeste: 'Lav projektplan. Fremlæg for Dorte.' },
+      { navn: 'SameSystem → WordPress (medarbejderside)', status: 'afventer', prio: 'middel', deadline: '', ansvarlig: 'Ditte', naeste: 'Afklare API-nøgle, profilbilleder og WordPress-adgang med IT/web.' },
+      { navn: 'Marketing: WordPress klinikstruktur', status: 'pauseret', prio: 'lav', deadline: '', ansvarlig: 'Ditte', naeste: 'Afklaring: kun "Hvem er vi" eller hele kliniksidestruktur?' },
+      { navn: 'Rekruttering: HR assistent', status: 'igang', prio: 'hoj', deadline: '31/03/2026', ansvarlig: 'Ditte', naeste: 'Interviews d. 18. marts. Vurdering og beslutning om kandidater.' },
+    ]
+  },
+  {
+    id: 'udvikling',
+    title: '🔧 Udvikling & forbedringer',
+    rows: [
+      { navn: 'Personalehåndbog — Klinikker', status: 'igang', prio: 'hoj', deadline: '31/03/2026', ansvarlig: 'Ditte', naeste: 'Opfølgende møde med René om input til klinikker.' },
+      { navn: 'Skabeloner: fritstilling og modregning', status: 'ikkest', prio: 'middel', deadline: '31/03/2026', ansvarlig: 'Ditte', naeste: 'Gennemgang og opdatering af skabeloner.' },
+      { navn: 'Lederhåndbog for ledere og klinikker', status: 'igang', prio: 'middel', deadline: '31/03/2026', ansvarlig: 'Ditte', naeste: 'Tale med Martin og Mette angående input.' },
+      { navn: 'Udvikling af eNPS-spørgsmål', status: 'ikkest', prio: 'middel', deadline: '31/05/2026', ansvarlig: 'Ditte', naeste: 'Book EML til gennemgang. Involvér Dorte og René til godkendelse.' },
+    ]
+  },
+];
+
+const PROJ_STATUS_OPTS = { igang: 'I gang', afventer: 'Afventer', pauseret: 'Pauseret', faerdig: 'Færdig', ikkest: 'Ikke startet' };
+const PROJ_PRIO_OPTS   = { hoj: '🔴 Høj', middel: '🟡 Middel', lav: '⚪ Lav' };
+
+function projLoadData() {
+    try { const r = localStorage.getItem(PROJ_KEY); return r ? JSON.parse(r) : null; } catch(e) { return null; }
+}
+
+function projSaveData() {
+    const data = { sections: {}, notes: (document.getElementById('proj-notes-field') || {}).value || '' };
+    PROJ_SECTIONS.forEach(s => { data.sections[s.id] = projReadTable(s.id); });
+    localStorage.setItem(PROJ_KEY, JSON.stringify(data));
+    const el = document.getElementById('proj-save-msg');
+    if (el) { el.textContent = '✓ Gemt'; el.className = 'proj-save-flash'; setTimeout(() => { el.textContent = ''; el.className = ''; }, 2000); }
+}
+
+function projBygUI() {
+    const saved = projLoadData();
+    const app = document.getElementById('proj-app');
+    if (!app) return;
+    app.innerHTML = '';
+
+    const bar = document.createElement('div');
+    bar.className = 'proj-save-bar';
+    bar.innerHTML = '<span style="margin-right:auto">Klik i et felt for at redigere · ✕ for at slette</span><span id="proj-save-msg"></span>';
+    app.appendChild(bar);
+
+    PROJ_SECTIONS.forEach(sec => {
+        const rows = saved ? (saved.sections[sec.id] || []) : sec.rows;
+        app.appendChild(projBygSektion(sec, rows));
+    });
+
+    const notesSec = document.createElement('div');
+    notesSec.className = 'proj-section';
+    notesSec.innerHTML = `
+        <div class="proj-section-header"><span class="proj-section-title">📝 Løse noter & idéer</span></div>
+        <div class="proj-notes-box"><textarea id="proj-notes-field" placeholder="Skriv løse tanker, idéer eller opfølgninger her...">${saved ? (saved.notes || '') : ''}</textarea></div>
+    `;
+    notesSec.querySelector('textarea').addEventListener('blur', projSaveData);
+    app.appendChild(notesSec);
+}
+
+function projBygSektion(sec, rows) {
+    const div = document.createElement('div');
+    div.className = 'proj-section';
+    div.innerHTML = `
+        <div class="proj-section-header">
+            <span class="proj-section-title">${sec.title}</span>
+            <span class="proj-count" id="proj-count-${sec.id}">0</span>
+            <button class="proj-btn-add" onclick="projTilføjRække('${sec.id}')">+ Tilføj</button>
+        </div>
+        <table>
+            <thead><tr>
+                <th style="width:24%">Opgave / Projekt</th>
+                <th style="width:11%">Status</th>
+                <th style="width:9%">Prioritet</th>
+                <th style="width:10%">Deadline</th>
+                <th style="width:10%">Ansvarlig</th>
+                <th style="width:30%">Næste skridt</th>
+                <th style="width:6%"></th>
+            </tr></thead>
+            <tbody id="proj-body-${sec.id}"></tbody>
+        </table>
+    `;
+    const tbody = div.querySelector('tbody');
+    if (!rows.length) {
+        tbody.innerHTML = `<tr class="proj-empty-row"><td colspan="7">Ingen opgaver endnu.</td></tr>`;
+    } else {
+        rows.forEach(r => tbody.appendChild(projLavRække(sec.id, r)));
+    }
+    projOpdaterTæller(sec.id);
+    return div;
+}
+
+function projLavRække(secId, r) {
+    const tr = document.createElement('tr');
+    const dl = r.deadline || '';
+    tr.innerHTML = `
+        <td><div contenteditable="true" data-placeholder="Opgavenavn" class="proj-ce-navn">${projEsc(r.navn || '')}</div></td>
+        <td>${projLavSelect('proj-status-sel', PROJ_STATUS_OPTS, r.status || 'ikkest')}</td>
+        <td>${projLavSelect('proj-prio-sel', PROJ_PRIO_OPTS, r.prio || 'middel')}</td>
+        <td><div contenteditable="true" data-placeholder="dd/mm/åååå" class="proj-ce-deadline ${projDeadlineKlasse(dl)}">${projEsc(dl)}</div></td>
+        <td><div contenteditable="true" data-placeholder="Navn" class="proj-ce-ansvarlig">${projEsc(r.ansvarlig || '')}</div></td>
+        <td><div contenteditable="true" data-placeholder="Næste skridt..." class="proj-ce-naeste">${projEsc(r.naeste || '')}</div></td>
+        <td><button class="proj-btn-danger" onclick="projSletRække(this,'${secId}')">✕</button></td>
+    `;
+    tr.querySelectorAll('[contenteditable]').forEach(el => el.addEventListener('blur', () => { projOpdaterDeadlineStyle(tr); projSaveData(); }));
+    tr.querySelectorAll('select').forEach(el => { el.addEventListener('change', () => { projApplySelectStyle(el); projSaveData(); }); projApplySelectStyle(el); });
+    return tr;
+}
+
+function projLavSelect(cls, opts, val) {
+    const options = Object.entries(opts).map(([k, v]) => `<option value="${k}"${k === val ? ' selected' : ''}>${v}</option>`).join('');
+    return `<select class="${cls}">${options}</select>`;
+}
+
+function projApplySelectStyle(el) {
+    const statusMap = { igang: 'ps-igang', afventer: 'ps-afventer', pauseret: 'ps-pauseret', faerdig: 'ps-faerdig', ikkest: 'ps-ikkest' };
+    const prioMap   = { hoj: 'pp-hoj', middel: 'pp-middel', lav: 'pp-lav' };
+    const isStatus  = el.classList.contains('proj-status-sel');
+    const map = isStatus ? statusMap : prioMap;
+    el.className = isStatus ? 'proj-status-sel' : 'proj-prio-sel';
+    if (map[el.value]) el.classList.add(map[el.value]);
+}
+
+function projDeadlineKlasse(dl) {
+    if (!dl) return '';
+    const parts = dl.split('/');
+    if (parts.length !== 3) return '';
+    const d = new Date(+parts[2], +parts[1] - 1, +parts[0]);
+    const diff = (d - new Date()) / 86400000;
+    if (diff < 7)  return 'proj-deadline-urgent';
+    if (diff < 21) return 'proj-deadline-soon';
+    return '';
+}
+
+function projOpdaterDeadlineStyle(tr) {
+    const el = tr.querySelector('.proj-ce-deadline');
+    if (!el) return;
+    el.className = 'proj-ce-deadline ' + projDeadlineKlasse(el.innerText.trim());
+}
+
+function projReadTable(id) {
+    const rows = [];
+    document.querySelectorAll(`#proj-body-${id} tr:not(.proj-empty-row)`).forEach(tr => {
+        rows.push({
+            navn:      tr.querySelector('.proj-ce-navn')?.innerText.trim()      || '',
+            status:    tr.querySelector('.proj-status-sel')?.value              || 'ikkest',
+            prio:      tr.querySelector('.proj-prio-sel')?.value                || 'middel',
+            deadline:  tr.querySelector('.proj-ce-deadline')?.innerText.trim()  || '',
+            ansvarlig: tr.querySelector('.proj-ce-ansvarlig')?.innerText.trim() || '',
+            naeste:    tr.querySelector('.proj-ce-naeste')?.innerText.trim()    || '',
+        });
+    });
+    return rows;
+}
+
+function projTilføjRække(secId) {
+    const tbody = document.getElementById('proj-body-' + secId);
+    const empty = tbody.querySelector('.proj-empty-row');
+    if (empty) empty.remove();
+    const row = projLavRække(secId, { navn: '', status: 'ikkest', prio: 'middel', deadline: '', ansvarlig: 'Ditte', naeste: '' });
+    tbody.appendChild(row);
+    row.querySelector('[contenteditable]').focus();
+    projSaveData();
+}
+
+function projSletRække(btn, secId) {
+    if (!confirm('Slet denne opgave?')) return;
+    const tr = btn.closest('tr');
+    const tbody = tr.closest('tbody');
+    tr.remove();
+    if (!tbody.querySelectorAll('tr:not(.proj-empty-row)').length) {
+        tbody.innerHTML = `<tr class="proj-empty-row"><td colspan="7">Ingen opgaver endnu.</td></tr>`;
+    }
+    projSaveData();
+    projOpdaterTæller(secId);
+}
+
+function projOpdaterTæller(id) {
+    const n = document.querySelectorAll(`#proj-body-${id} tr:not(.proj-empty-row)`).length;
+    const el = document.getElementById('proj-count-' + id);
+    if (el) el.textContent = n;
+}
+
+function projEsc(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
 
